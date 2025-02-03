@@ -1,12 +1,10 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { update_easy, update_medium, update_hard } from "../store/slices/user";
 
 export function Popup({setPopup, mode, level}) {
     const mistakes_set = useSelector((state) => state.game.mistakes_set);
-    const navigate = useNavigate();
     const userid = useSelector((state) => state.user.userid)
     const easy = useSelector((state) => state.user.easy)
     const medium = useSelector((state) => state.user.medium)
@@ -35,12 +33,10 @@ export function Popup({setPopup, mode, level}) {
                         medium: medium || [],
                         hard: hard || [],
                     };
-                    console.log(easy, medium, hard);
     
                     if (!levelArrays[mode]) {
                         throw new Error(`Invalid mode: ${mode}`);
                     }
-                    console.log(level, mode, levelArrays, 'most needed');
                     if (!levelArrays[mode].includes(level)) {
                         const response = await fetch(`http://localhost:4000/game/${mode}/${level}/${userid}`, {
                             method: 'POST',
@@ -57,7 +53,7 @@ export function Popup({setPopup, mode, level}) {
                         if(mode === 'easy'){
                             dispatch(update_easy(level))
                         }
-                        else if(mode == 'medium'){
+                        else if(mode === 'medium'){
                             dispatch(update_medium(level))
                         }
                         else if(mode === 'hard'){
@@ -74,7 +70,7 @@ export function Popup({setPopup, mode, level}) {
         };
     
         updateSet();
-    }, [mode, level, userid, mistakes_set, easy, medium, hard]);
+    }, [mode, level, userid, mistakes_set, easy, medium, hard, dispatch, token]);
     
     
 

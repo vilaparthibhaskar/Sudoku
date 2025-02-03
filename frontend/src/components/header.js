@@ -10,7 +10,6 @@ export function Header() {
     const easy = useSelector((state) => state.user.easy);
     const medium = useSelector((state) => state.user.medium);
     const hard = useSelector((state) => state.user.hard);
-    console.log(easy, medium, hard);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const loggedin = useSelector((state) => state.user.loggedin);

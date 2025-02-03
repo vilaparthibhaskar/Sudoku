@@ -68,7 +68,6 @@ export function Cell({ row, col, playsound }) {
             dispatch(update({ row, col }));
             dispatch(changeCell({ row, col }));
             dispatch(increaseMove([row - 1, col - 1]))
-            console.log(moves, 'moves')
         }
     }
 

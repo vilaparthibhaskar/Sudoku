@@ -19,11 +19,6 @@ export function Signup() {
             return;
         }
 
-        console.log("Name:", name);
-        console.log("Email:", email);
-        console.log("Password:", password);
-        console.log("Age:", age);
-        console.log("Gender:", gender);
 
         const response = await fetch('http://localhost:4000/signup', {
             method: 'POST',

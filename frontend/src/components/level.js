@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
 
 
 export function Level({mode, level, playsound}){

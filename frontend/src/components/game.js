@@ -30,22 +30,13 @@ export function Game(){
     const game = useSelector((state) => state.sudoku.game);
     const mistakes_set = useSelector((state) => state.game.mistakes_set);
     const [show_popup, setPopup] = useState(false)
-    const isloggedin = useSelector((state) => state.user.loggedin);
-    const userName = useSelector((state) => state.user.name)
-    const easy = useSelector((state) => state.user.easy)
-    const easycheck = useSelector((state) => state.user.easy)
-    const mediumcheck = useSelector((state) => state.user.medium)
-    const hardcheck = useSelector((state) => state.user.hard)
-    console.log(isloggedin, 'hi');
-    console.log(userName)
-    console.log(easy)
-    console.log(easycheck, 'easy')
+
 
     useEffect(() => {
     if(mistakes >= 3 || (Object.keys(mistakes_set).length === 0 && checkfilled(game) === 81)){
         setPopup(true)
     }
-    }, [mistakes_set, game])
+    }, [mistakes_set, game, mistakes])
     
 
 

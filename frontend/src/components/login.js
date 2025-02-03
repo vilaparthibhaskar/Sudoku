@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {change_user_name, change_loggedin, update_token, update_easy, update_hard, update_medium, load_easy, load_medium, load_hard, update_userid} from '../store/slices/user'
+import {change_user_name, change_loggedin, update_token, load_easy, load_medium, load_hard, update_userid} from '../store/slices/user'
 
 export function LoginPage() {
     const navigate = useNavigate(); 
@@ -12,8 +12,7 @@ export function LoginPage() {
         const formData = new FormData(event.target);
         const email = formData.get("email");
         const password = formData.get("password");
-        console.log("email:", email);
-        console.log("Password:", password);
+
 
         const response = await fetch('http://localhost:4000/login', {
             method: 'POST',
@@ -23,8 +22,6 @@ export function LoginPage() {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data.user.username, data.token, data.user.solved)
-            console.log(data.user);
             dispatch(change_user_name(data.user.username))
             dispatch(change_loggedin(true))
             dispatch(update_token(data.token))
