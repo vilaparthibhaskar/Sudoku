@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 const {authenticateToken} = require('./middleware/middleware');
 
 require('dotenv').config();
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
+// console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 
 
@@ -38,7 +38,6 @@ app.get('/game', authenticateToken, async (req, res, next) => {
 
 
 app.get('/game/:mode/:level', authenticateToken, async (req, res) => {
-    console.log('triggered');
     const { mode, level } = req.params;
     let levelIndex = parseInt(level) - 1;
 
@@ -111,9 +110,7 @@ app.get('/game/:mode/:levelIndex/:rowIndex/:colIndex/:val', authenticateToken, a
 
 app.post('/signup', async (req, res, next) => {
     try{
-        console.log(req.body);
     const { username, password, email, age, gender } = req.body;
-    console.log(username, password, email, age, gender)
     if (!username || !password || !email || !age || !gender) {
         return res.status(400).send('All fields are required.');
     }
@@ -134,23 +131,21 @@ app.post('/signup', async (req, res, next) => {
 
 app.post('/login', async (req, res) => {
     try {
-        console.log('Process ENV:', process.env);
+        // console.log('Process ENV:', process.env);
 
         const { email, password } = req.body;
         if (!email || !password) {
             return res.status(400).send('email and password are required.');
         }
         const user = await userModel.findOne({ email });
-        console.log(user);
         if (!user) {
             return res.status(403).send('Invalid username or password.');
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log('2')
         if (!isPasswordValid) {
             return res.status(403).send('Invalid email or password.');
         }
-        console.log('JWT_SECRET:', process.env.JWT_SECRET);
+        // console.log('JWT_SECRET:', process.env.JWT_SECRET);
         const token = jwt.sign({ email }, process.env.JWT_SECRET || 'Bhadra@Bhaskar', {
             expiresIn: process.env.JWT_EXPIRATION || '1h',
         });
@@ -162,7 +157,6 @@ app.post('/login', async (req, res) => {
 });
 
 app.post('/game/:mode/:levelIndex/:userid', authenticateToken, async (req, res) => {
-    console.log('triggered this');
     try {
         const { mode, levelIndex, userid } = req.params;
         const level = parseInt(levelIndex);
