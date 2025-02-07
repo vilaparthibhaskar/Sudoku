@@ -14,7 +14,6 @@ export function Popup({setPopup, mode, level}) {
     const token = localStorage.getItem('token') || '';
 
     function handleClick(){
-        // navigate('/levels')
         setPopup(false)
     }
 

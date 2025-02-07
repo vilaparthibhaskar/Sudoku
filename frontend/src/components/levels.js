@@ -27,7 +27,7 @@ export function Levels() {
         dispatch(copy({ cur: new_sudoku }));
         dispatch(change_initial({ cur: new_sudoku }));
         dispatch(resetMoves());
-    }, [])
+    }, [dispatch])
 
   return (
     <>

@@ -10,7 +10,6 @@ export function Cell({ row, col, playsound }) {
     const selected = useSelector((state) => state.sudoku.selected);
     const initial = useSelector((state) => state.sudoku.initial);
     const mistakes_set = useSelector((state) => state.game.mistakes_set);
-    const moves = useSelector((state) => state.sudoku.moves)
     const dispatch = useDispatch();
     const { mode, level } = useParams();
     
@@ -52,7 +51,7 @@ export function Cell({ row, col, playsound }) {
                     setStatus(false);
                 });
         }
-    }, [val, mode, level, row, col]);
+    }, [val, mode, level, row, col, dispatch, initial, mistakes_set, token]);
 
 
     let isSelected = 0;

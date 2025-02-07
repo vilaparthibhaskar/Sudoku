@@ -6,9 +6,10 @@ module.exports.authenticateToken = (req, res, next) => {
 
     if (!token) return res.status(401).send('Access denied.');
 
-    jwt.verify(token, (process.env.JWT_SECRET || 'Bhadra@Bhaskar'), (err, user) => {
+    jwt.verify(token, (process.env.JWT_SECRET), (err, user) => {
         if (err) return res.status(403).send('Invalid token.');
         req.user = user;
         next();
     });
 };
+

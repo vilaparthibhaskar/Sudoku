@@ -9,12 +9,11 @@ const jwt = require('jsonwebtoken');
 const {authenticateToken} = require('./middleware/middleware');
 
 require('dotenv').config();
-// console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/sudoku')
+mongoose.connect('mongodb+srv://' + process.env.Mongo_username + ':' + process.env.Mongo_password + '@cluster0.fbh1r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 .then(() => {
     console.log("Mongodb connection succesful");
 }).catch((e) => {
@@ -24,6 +23,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/sudoku')
 const app = express();
 
 app.use(cors());
+// app.use(cors({ origin: "https://your-frontend-url.com" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -131,7 +131,6 @@ app.post('/signup', async (req, res, next) => {
 
 app.post('/login', async (req, res) => {
     try {
-        // console.log('Process ENV:', process.env);
 
         const { email, password } = req.body;
         if (!email || !password) {
@@ -145,9 +144,8 @@ app.post('/login', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(403).send('Invalid email or password.');
         }
-        // console.log('JWT_SECRET:', process.env.JWT_SECRET);
-        const token = jwt.sign({ email }, process.env.JWT_SECRET || 'Bhadra@Bhaskar', {
-            expiresIn: process.env.JWT_EXPIRATION || '1h',
+        const token = jwt.sign({ email }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRATION,
         });
         res.json({ token, user });
     } catch (error) {
