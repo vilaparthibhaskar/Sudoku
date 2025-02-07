@@ -14,7 +14,7 @@ export function LoginPage() {
         const password = formData.get("password");
 
 
-        const response = await fetch('http://localhost:4000/login', {
+        const response = await fetch('https://sudoku-1hj0.onrender.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),

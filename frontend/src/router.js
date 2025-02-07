@@ -17,7 +17,7 @@ const gameLoader = async ({ params }) => {
     }
   
     try {
-      const response = await fetch(`http://localhost:4000/game/${mode}/${level}`, {
+      const response = await fetch(`https://sudoku-1hj0.onrender.com/game/${mode}/${level}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

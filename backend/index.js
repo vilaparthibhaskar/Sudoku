@@ -22,8 +22,7 @@ mongoose.connect('mongodb+srv://' + process.env.Mongo_username + ':' + process.e
 
 const app = express();
 
-app.use(cors());
-// app.use(cors({ origin: "https://your-frontend-url.com" }));
+app.use(cors({ origin: "https://sudoku-1-aso9.onrender.com" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

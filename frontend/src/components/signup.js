@@ -20,7 +20,7 @@ export function Signup() {
         }
 
 
-        const response = await fetch('http://localhost:4000/signup', {
+        const response = await fetch('https://sudoku-1hj0.onrender.com/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username:name, password, email, age, gender }),

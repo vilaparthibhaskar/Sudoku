@@ -22,7 +22,7 @@ export function Cell({ row, col, playsound }) {
 
     useEffect(() => {
         if (val !== 0 && initial[row - 1][col - 1] === 0) {
-            fetch(`http://localhost:4000/game/${mode}/${level}/${row - 1}/${col - 1}/${val}`, {
+            fetch(`https://sudoku-1hj0.onrender.com/game/${mode}/${level}/${row - 1}/${col - 1}/${val}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,

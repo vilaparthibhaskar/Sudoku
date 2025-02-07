@@ -37,7 +37,7 @@ export function Popup({setPopup, mode, level}) {
                         throw new Error(`Invalid mode: ${mode}`);
                     }
                     if (!levelArrays[mode].includes(level)) {
-                        const response = await fetch(`http://localhost:4000/game/${mode}/${level}/${userid}`, {
+                        const response = await fetch(`https://sudoku-1hj0.onrender.com/game/${mode}/${level}/${userid}`, {
                             method: 'POST',
                             headers: {
                                 'Authorization': `Bearer ${token}`,
