@@ -24,12 +24,21 @@ const app = express();
 
 app.use(
     cors({
-      origin: ['http://localhost:3000', 'https://sudoku-1-aso9.onrender.com'],
+      origin: "*", 
       credentials: true,
+      allowedHeaders: ["Content-Type", "Authorization"],
+      methods: ["GET", "POST", "PUT", "DELETE"]
     })
   );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use((req, res, next) => {
+    console.log(`Received request: ${req.method} ${req.url}`);
+    console.log("Headers:", req.headers);
+    console.log("Body:", req.body);
+    next();
+  });
 
 app.get('/', async (req, res, next) => {
     res.send('hi');
