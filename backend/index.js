@@ -22,7 +22,12 @@ mongoose.connect('mongodb+srv://' + process.env.Mongo_username + ':' + process.e
 
 const app = express();
 
-app.use(cors({ origin: "https://sudoku-1-aso9.onrender.com" }));
+app.use(
+    cors({
+      origin: ['http://localhost:3000', 'https://sudoku-1-aso9.onrender.com'],
+      credentials: true,
+    })
+  );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
