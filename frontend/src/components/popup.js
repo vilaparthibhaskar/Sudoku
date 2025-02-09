@@ -69,6 +69,7 @@ export function Popup({setPopup, mode, level}) {
         };
     
         updateSet();
+        
     }, [mode, level, userid, mistakes_set, easy, medium, hard, dispatch, token]);
     
     

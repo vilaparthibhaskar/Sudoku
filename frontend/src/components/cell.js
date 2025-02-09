@@ -51,7 +51,8 @@ export function Cell({ row, col, playsound }) {
                     setStatus(false);
                 });
         }
-    }, [val, mode, level, row, col, dispatch, initial, mistakes_set, token]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [val, mode, level]);
 
 
     let isSelected = 0;
