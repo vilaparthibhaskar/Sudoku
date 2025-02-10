@@ -37,6 +37,7 @@ export function LoginPage() {
         }
     };
 
+
     return (
         <div 
             className="d-flex justify-content-center align-items-center vh-100"
@@ -86,9 +87,9 @@ export function LoginPage() {
                 <div className="text-center mt-3">
                     <p>
                         Don't have an account?{" "}
-                        <a href="/signup" className="text-decoration-none" style={{color:'#fb8500'}}>
+                        <button onClick={() => navigate('/register')} className="text-decoration-none" style={{color:'#fb8500'}}>
                             Register
-                        </a>
+                        </button>
                     </p>
                 </div>
             </div>
