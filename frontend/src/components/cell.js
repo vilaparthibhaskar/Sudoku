@@ -65,6 +65,7 @@ export function Cell({ row, col, playsound }) {
     function handleChange() {
         if (initial[row - 1][col - 1] === 0 && selected !== -1) {
             playsound();
+            setStatus(true);
             dispatch(update({ row, col }));
             dispatch(changeCell({ row, col }));
             dispatch(increaseMove([row - 1, col - 1]))
