@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export function Signup() {
     const navigate = useNavigate(); 
@@ -145,9 +146,9 @@ export function Signup() {
                 <div className="text-center mt-3">
                     <p>
                         Already have an account?{" "}
-                        <a href="/login" className="text-decoration-none" style={{color:'#fb8500'}}> 
+                        <Link to="/login" className="text-decoration-none" style={{color:'#fb8500'}}> 
                             Login
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

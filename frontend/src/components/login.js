@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import {change_user_name, change_loggedin, update_token, load_easy, load_medium, load_hard, update_userid} from '../store/slices/user'
 
 export function LoginPage() {
@@ -87,9 +88,9 @@ export function LoginPage() {
                 <div className="text-center mt-3">
                     <p>
                         Don't have an account?{" "}
-                        <button onClick={() => navigate('/signup')} className="text-decoration-none" style={{color:'#fb8500'}}>
+                        <Link to='/signup' className="text-decoration-none" style={{color:'#fb8500'}}>
                             Register
-                        </button>
+                        </Link>
                     </p>
                 </div>
             </div>
