@@ -87,7 +87,7 @@ export function LoginPage() {
                 <div className="text-center mt-3">
                     <p>
                         Don't have an account?{" "}
-                        <button onClick={() => navigate('/register')} className="text-decoration-none" style={{color:'#fb8500'}}>
+                        <button onClick={() => navigate('/signup')} className="text-decoration-none" style={{color:'#fb8500'}}>
                             Register
                         </button>
                     </p>
